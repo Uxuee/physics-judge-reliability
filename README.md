@@ -13,13 +13,13 @@ The extension separates two properties that must not be confused:
 
 A judge can be perfectly stable and consistently wrong. We therefore report both.
 
-## Current milestone: study foundation
+## Current milestone: offline foundation repair
 
 The first milestone is deliberately offline and inexpensive. It provides:
 
 - a draft study protocol in `docs/study_protocol.md`;
-- a small schema-valid pilot set of controlled physics solutions;
-- implementations of prompt-pair agreement (JSS), flip rate, accuracy, and joint reliability categories;
+- 12 provisional engineering fixtures with a reusable schema validator;
+- task-specific agreement, coverage, strict accuracy, incorrect-solution precision/recall/F1, and four joint reliability categories;
 - tests that verify the metric behavior, including the “stable but wrong” failure mode;
 - a local baseline command that requires no API key and spends no money.
 
@@ -29,6 +29,8 @@ The first milestone is deliberately offline and inexpensive. It provides:
 - **RQ2:** How accurately do judge verdicts identify physics reasoning errors?
 - **RQ3:** Does a correct final answer make a judge less likely to detect invalid reasoning?
 - **RQ4:** Do physics-specific rubrics improve correctness or stability relative to generic rubrics?
+
+- **RQ5:** How does performance vary by error type, physics domain, and level?
 
 ## Quick start
 
@@ -40,14 +42,14 @@ python -m venv .venv
 # macOS/Linux: source .venv/bin/activate
 pip install -e .
 python -m unittest discover -s tests
-python -m physics_judge.baseline
+python -m physics_judge.baseline --dataset data/physics_pilot.jsonl
 ```
 
 The baseline uses deterministic mock judgments to demonstrate the full scoring contract. It does **not** claim empirical results about any LLM.
 
 ## Planned phases
 
-1. **Offline foundation (complete):** schema, metrics, pilot items, tests, and protocol.
+1. **Offline repairs implemented:** validation, descriptive metrics, fixtures, tests, and draft protocol; scientific validation remains outstanding.
 2. **Replication:** run a small JudgeSense factuality/coherence subset and verify the qualitative prompt-sensitivity finding.
 3. **Physics pilot:** obtain judgments for controlled physics solutions using frozen prompts and model settings.
 4. **Extension:** compare generic versus physics-specific rubrics and test correct-answer/wrong-reasoning cases.
@@ -56,7 +58,7 @@ The baseline uses deterministic mock judgments to demonstrate the full scoring c
 ## Repository layout
 
 ```text
-data/physics_pilot.jsonl       Controlled pilot items and expert labels
+data/physics_pilot.jsonl       Provisional physics engineering fixtures
 docs/study_protocol.md         Draft hypotheses and analysis plan
 src/physics_judge/metrics.py   Reliability metrics
 src/physics_judge/baseline.py  Offline end-to-end demonstration
@@ -79,4 +81,12 @@ tests/                         Metric and data-contract tests
 
 ## Status
 
-Research scaffold only. No live LLM results have been collected yet.
+Not ready for live experiments. No live LLM results have been collected. Independent review, frozen prompts/data, inferential analysis, and an approved budget-controlled runner remain outstanding.
+
+## Dataset and scoring contracts
+
+See [data card](docs/data_card.md) for version 0.2.0-dev and the proposed (not generated) matched design. See [study protocol](docs/study_protocol.md) for denominators, invalid-output handling and problem-level clustering. Undefined metric ratios are JSON null; invalid outputs are not verdict flips. All annotations remain provisional. The explicit dataset path also supports installed-package use from outside the checkout.
+
+## Upstream version distinction
+
+The historical [arXiv v2 paper](https://arxiv.org/abs/2604.23478v2) and rebuilt dataset v2 are different artifacts. The upstream [errata](https://github.com/rohithreddybc/judgeSense/blob/main/ERRATA.md) documents defects in the historical data and results. The corrected [dataset](https://huggingface.co/datasets/Rohithreddybc/judgesense-benchmark) and code must be pinned and audited together before replication. Do not treat old headline values as targets for the rebuilt sample. Our physics data, validator and scoring implementation are independent extension code; upstream citations do not establish affiliation or validate our annotations.

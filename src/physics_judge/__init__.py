@@ -1,5 +1,9 @@
-"""Tools for evaluating the reliability of LLM physics judges."""
+"""Offline tools for evaluating physics judges."""
+from .dataset import load_dataset, validate_dataset
+from .metrics import (accuracy, accuracy_report, agreement_report, flip_rate,
+                      incorrect_solution_metrics, joint_reliability,
+                      joint_reliability_proportions, jss, parse_label)
 
-from .metrics import accuracy, flip_rate, joint_reliability, jss
-
-__all__ = ["accuracy", "flip_rate", "joint_reliability", "jss"]
+__all__ = ["load_dataset", "validate_dataset", "accuracy", "accuracy_report",
+           "agreement_report", "flip_rate", "incorrect_solution_metrics",
+           "joint_reliability", "joint_reliability_proportions", "jss", "parse_label"]

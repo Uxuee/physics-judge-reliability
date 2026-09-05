@@ -2,20 +2,12 @@
 
 from __future__ import annotations
 
+import argparse
 import json
-from pathlib import Path
+from .dataset import load_dataset
 
-from .metrics import accuracy, flip_rate, joint_reliability, jss
-
-
-def project_root() -> Path:
-    return Path(__file__).resolve().parents[2]
-
-
-def load_pilot() -> list[dict]:
-    path = project_root() / "data" / "physics_pilot.jsonl"
-    with path.open(encoding="utf-8") as handle:
-        return [json.loads(line) for line in handle if line.strip()]
+from .metrics import (accuracy_report, agreement_report, incorrect_solution_metrics,
+                      joint_reliability, joint_reliability_proportions)
 
 
 def mock_judgments(items: list[dict]) -> list[dict]:
@@ -30,23 +22,29 @@ def mock_judgments(items: list[dict]) -> list[dict]:
             a = b = "INCORRECT" if gold == "CORRECT" else "CORRECT"
         else:
             a = b = gold
-        rows.append({"item_id": item["item_id"], "expert_label": gold,
+        rows.append({"item_id": item["item_id"], "problem_id": item["problem_id"], "expert_label": gold,
                      "decision_a": a, "decision_b": b})
     return rows
 
 
-def main() -> None:
-    records = mock_judgments(load_pilot())
+def main(argv=None) -> None:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--dataset", required=True, help="Path to a physics JSONL dataset")
+    args = parser.parse_args(argv)
+    records = mock_judgments(load_dataset(args.dataset))
     report = {
+        "result_kind": "mock",
         "warning": "Mock decisions only; these are not empirical LLM results.",
         "n_items": len(records),
-        "jss": jss(records),
-        "flip_rate": flip_rate(records),
-        "accuracy_a": accuracy(records, "a"),
-        "accuracy_b": accuracy(records, "b"),
-        "joint_reliability": joint_reliability(records),
+        "agreement": agreement_report(records),
+        "accuracy_a": accuracy_report(records, "a"),
+        "accuracy_b": accuracy_report(records, "b"),
+        "incorrect_a": incorrect_solution_metrics(records, "a"),
+        "incorrect_b": incorrect_solution_metrics(records, "b"),
+        "joint_counts": joint_reliability(records),
+        "joint_proportions": joint_reliability_proportions(records),
     }
-    print(json.dumps(report, indent=2))
+    print(json.dumps(report, indent=2, allow_nan=False))
 
 
 if __name__ == "__main__":
