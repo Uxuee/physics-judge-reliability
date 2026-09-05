@@ -90,3 +90,7 @@ See [data card](docs/data_card.md) for version 0.2.0-dev and the proposed (not g
 ## Upstream version distinction
 
 The historical [arXiv v2 paper](https://arxiv.org/abs/2604.23478v2) and rebuilt dataset v2 are different artifacts. The upstream [errata](https://github.com/rohithreddybc/judgeSense/blob/main/ERRATA.md) documents defects in the historical data and results. The corrected [dataset](https://huggingface.co/datasets/Rohithreddybc/judgesense-benchmark) and code must be pinned and audited together before replication. Do not treat old headline values as targets for the rebuilt sample. Our physics data, validator and scoring implementation are independent extension code; upstream citations do not establish affiliation or validate our annotations.
+
+## Milestone 2: offline computational reproduction
+
+The corrected released Claude Haiku coherence decisions have been rescored without new model calls. See the [reproduction report](results/judgesense_coherence_reproduction.md), [metrics](results/judgesense_coherence_metrics.json), [manifest](results/judgesense_coherence_manifest.json), and [rerun instructions](docs/judgesense_reproduction.md). This is not a live replication, historical v1 reproduction, or evidence of physics correctness. Running the expanded test suite requires the reproduction extra (NumPy); the pinned-release integration test uses the local checksum-verified cache and never downloads during tests.

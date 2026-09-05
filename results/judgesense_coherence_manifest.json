@@ -1,0 +1,83 @@
+{
+  "upstream_repository": "https://github.com/rohithreddybc/judgeSense",
+  "upstream_commit": "223c31d991ef547ea07d81bba054e6973245a8dc",
+  "dataset_version": "v2.1 (dataset card); builder_version 2.0.0; loader_version 2.1.0",
+  "model_id": "claude-haiku-4-5-20251001",
+  "dataset_last_changed": "818bff0b781fe5ad04bfdaea3212ba0b00ea0825",
+  "raw_last_changed": "5e34e13a3d0715a1db245f8240229fd002de8633",
+  "files": {
+    "README.md": {
+      "sha256": "e9db6cd53bb9326268ca1c31da9e6c22f495b425585f4e2c2bdce23ef2218a86",
+      "bytes": 10127
+    },
+    "ERRATA.md": {
+      "sha256": "5e4a7012d9ef277e6ec013cb47f58e655c1a82317fb1f0e120eef9bc1ddebdd3",
+      "bytes": 7255
+    },
+    "LICENSE": {
+      "sha256": "811722569396ca11ef54e38fe0e859e988f1d5dd1a9210a31d62e9337afeda5c",
+      "bytes": 1080
+    },
+    "judgesense-benchmark/README.md": {
+      "sha256": "ca950f67b107cf479033c07789c6aeeae6f1c66e7fd9ee65cbad5c7145429e45",
+      "bytes": 9079
+    },
+    "data/v2/manifest.json": {
+      "sha256": "b61106724be921c6c1a9947154eb0860d095c6277881eafd4f97c83ceed0d0c9",
+      "bytes": 1025
+    },
+    "data/v2/coherence.jsonl": {
+      "sha256": "71652eec3ab2de3b34bf5b9589596059c45144d237a93f5a5e0db9ac4dd49281",
+      "bytes": 477922
+    },
+    "data/results_v2/raw/claude-haiku_coherence.jsonl": {
+      "sha256": "d046c8b8a3773634fd938de287a570903090ef2140a1dde65549ed3f47a1d6bb",
+      "bytes": 654330
+    },
+    "data/results_v2/metrics_summary.json": {
+      "sha256": "f2d32133638d27ea2c8391c7c106cd19aaae815b72e91c3318714decf18dbe50",
+      "bytes": 28048
+    },
+    "src/judge_registry.py": {
+      "sha256": "2b59d9465413107542d123c338ef36c97989f0571226af9ccbf0b5cbdd6ef5ec",
+      "bytes": 17329
+    },
+    "src/metrics_v2.py": {
+      "sha256": "363098ed6f81e3876c02699bad8177ac18a52f846de6021af4e2d62bc5a79f56",
+      "bytes": 25925
+    },
+    "scripts/regenerate_results.py": {
+      "sha256": "5559d0f0df9e9e7fd1997d42a0dbdcdb007db8e28606ebaeae6b446c6a9f77f2",
+      "bytes": 41437
+    },
+    "src/run_v2.py": {
+      "sha256": "4d93d5f48783993a36a0600d1d1fa29de5fc8a1c9c248b83ddd9e60fe0cad34a",
+      "bytes": 21204
+    },
+    "docs/V2_ARCHITECTURE.md": {
+      "sha256": "45f8822594dc028fab10a57d5dcb6f7217d70e3b4b7c7f583fbf95bd10d1d8ad",
+      "bytes": 13433
+    }
+  },
+  "analysis_date": "2026-09-05T10:31:03.225063+00:00",
+  "analysis_kind": "offline reproduction",
+  "analysis_script_sha256": "ef181d479165b141355a9428e07131c620869fb5a4788431bd26bc00ffe9f0fc",
+  "python_version": "3.14.6 | packaged by Anaconda, Inc. | (main, Jul  9 2026, 14:29:05) [MSC v.1942 64 bit (AMD64)]",
+  "numpy_version": "2.5.2",
+  "clustering_unit": "item_id (upstream reproduction); source_document_id (sensitivity)",
+  "metric_definitions": {
+    "strict_jss": "valid agreements / all pairs",
+    "valid_pair_jss": "agreements / valid pairs",
+    "coverage": "valid outputs / 2N; valid pairs / N reported separately",
+    "kappa": "(observed agreement - marginal expected agreement)/(1-expected)",
+    "quadratic_weighted_kappa": "1 - observed squared rating distance / marginal expected squared distance",
+    "mean_absolute_rating_difference": "mean abs(A-B) over valid pairs"
+  },
+  "malformed_output_policy": "Use released decisions unchanged; UNCLEAR/null invalid. Strict JSS gives no credit; valid-pair and ordinal metrics exclude invalid pairs. Invalid pairs are not verdict flips. Fail on transport/refusal or unknown labels pending policy review.",
+  "repeat_policy": "Preserve repeat arms; do not add them as independent rows or reparaphrase observations",
+  "provenance_evidence": "All 250 identity/gold joins agree; dataset bytes also match at raw_last_changed commit; dataset build precedes all run timestamps. No input-prompt hash in raw logs: linkage is artifact/history based, not cryptographic proof of provider inputs.",
+  "undefined_policy": "null if denominator zero; report undefined bootstrap resamples; upstream uses zero for degenerate kappa but this run is nondegenerate",
+  "new_model_calls": 0,
+  "key_accessed": false,
+  "cost_usd": 0
+}

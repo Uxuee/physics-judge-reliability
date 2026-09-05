@@ -1,0 +1,201 @@
+{
+  "metrics": {
+    "n_rows": 250,
+    "n_items": 250,
+    "valid_pairs": 250,
+    "valid_outputs": 500,
+    "invalid_incomplete_pairs": 0,
+    "invalid_outputs": 0,
+    "agreements": 198,
+    "valid_pair_disagreements": 52,
+    "output_coverage": 1.0,
+    "pair_coverage": 1.0,
+    "strict_jss": 0.792,
+    "valid_pair_jss": 0.792,
+    "valid_pair_disagreement_rate": 0.208,
+    "cohens_kappa": 0.6227619627985259,
+    "quadratic_weighted_kappa": 0.8593523045764203,
+    "mean_absolute_rating_difference": 0.212
+  },
+  "item_cluster_ci": {
+    "cluster_key": "item_id",
+    "n_clusters": 250,
+    "n_bootstrap": 2000,
+    "seed": 42,
+    "confidence": 0.95,
+    "method": "percentile; NumPy default_rng; linear quantiles",
+    "intervals": {
+      "output_coverage": {
+        "ci95": [
+          1.0,
+          1.0
+        ],
+        "undefined_resamples": 0
+      },
+      "pair_coverage": {
+        "ci95": [
+          1.0,
+          1.0
+        ],
+        "undefined_resamples": 0
+      },
+      "strict_jss": {
+        "ci95": [
+          0.74,
+          0.84
+        ],
+        "undefined_resamples": 0
+      },
+      "valid_pair_jss": {
+        "ci95": [
+          0.74,
+          0.84
+        ],
+        "undefined_resamples": 0
+      },
+      "valid_pair_disagreement_rate": {
+        "ci95": [
+          0.16,
+          0.26
+        ],
+        "undefined_resamples": 0
+      },
+      "cohens_kappa": {
+        "ci95": [
+          0.5343529585406661,
+          0.7062472316437237
+        ],
+        "undefined_resamples": 0
+      },
+      "quadratic_weighted_kappa": {
+        "ci95": [
+          0.8139792351200766,
+          0.8966374151852512
+        ],
+        "undefined_resamples": 0
+      },
+      "mean_absolute_rating_difference": {
+        "ci95": [
+          0.16,
+          0.264
+        ],
+        "undefined_resamples": 0
+      }
+    }
+  },
+  "source_document_sensitivity_ci": {
+    "cluster_key": "source_document_id",
+    "n_clusters": 92,
+    "n_bootstrap": 2000,
+    "seed": 42,
+    "confidence": 0.95,
+    "method": "percentile; NumPy default_rng; linear quantiles",
+    "intervals": {
+      "output_coverage": {
+        "ci95": [
+          1.0,
+          1.0
+        ],
+        "undefined_resamples": 0
+      },
+      "pair_coverage": {
+        "ci95": [
+          1.0,
+          1.0
+        ],
+        "undefined_resamples": 0
+      },
+      "strict_jss": {
+        "ci95": [
+          0.7427290764463933,
+          0.8427976877645602
+        ],
+        "undefined_resamples": 0
+      },
+      "valid_pair_jss": {
+        "ci95": [
+          0.7427290764463933,
+          0.8427976877645602
+        ],
+        "undefined_resamples": 0
+      },
+      "valid_pair_disagreement_rate": {
+        "ci95": [
+          0.1572023122354398,
+          0.25727092355360665
+        ],
+        "undefined_resamples": 0
+      },
+      "cohens_kappa": {
+        "ci95": [
+          0.5240381448000214,
+          0.7107233552235002
+        ],
+        "undefined_resamples": 0
+      },
+      "quadratic_weighted_kappa": {
+        "ci95": [
+          0.8109863029952152,
+          0.8980726013891185
+        ],
+        "undefined_resamples": 0
+      },
+      "mean_absolute_rating_difference": {
+        "ci95": [
+          0.15935338145326644,
+          0.2631680946552427
+        ],
+        "undefined_resamples": 0
+      }
+    }
+  },
+  "comparison": {
+    "n_rows": {
+      "recomputed": 250,
+      "upstream": 250,
+      "match_at_upstream_precision": true
+    },
+    "n_items": {
+      "recomputed": 250,
+      "upstream": 250,
+      "match_at_upstream_precision": true
+    },
+    "strict_jss": {
+      "recomputed": 0.792,
+      "upstream": 0.792,
+      "match_at_upstream_precision": true
+    },
+    "valid_pair_jss": {
+      "recomputed": 0.792,
+      "upstream": 0.792,
+      "match_at_upstream_precision": true
+    },
+    "cohens_kappa": {
+      "recomputed": 0.6227619627985259,
+      "upstream": 0.6228,
+      "match_at_upstream_precision": true
+    },
+    "quadratic_weighted_kappa": {
+      "recomputed": 0.8593523045764203,
+      "upstream": 0.8594,
+      "match_at_upstream_precision": true
+    },
+    "strict_jss_ci95": {
+      "recomputed": [
+        0.74,
+        0.84
+      ],
+      "upstream": [
+        0.74,
+        0.84
+      ],
+      "match_at_upstream_precision": true
+    },
+    "malformed_rate": {
+      "recomputed": 0.0,
+      "upstream": 0.0,
+      "match_at_upstream_precision": true
+    }
+  },
+  "matches_upstream": true
+}
